@@ -5,6 +5,7 @@ import (
 )
 
 func main() {
-	BST := BinarySearchTree.CreateBSTRoot(10)
+	var BST BinarySearchTree.BinarySearchTree
+	BST.Insert(10)
 	BinarySearchTree.PrintBSTRoot(BST)
 }

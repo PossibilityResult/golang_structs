@@ -14,16 +14,34 @@ type BinarySearchTree struct {
 	root *Node
 }
 
-
-func CreateBSTRoot(_data int) BinarySearchTree {
-	root := Node{
+func (BST BinarySearchTree) Insert(_data int) {
+	newNode := Node{
 		data: _data,
 		right: nil,
 		left: nil, 
 	}
 
-	return BinarySearchTree{
-		root: &root,
+	if (BST.root == nil) {
+		BST.root = &newNode
+		return
+	}
+
+	currentNode := BST.root
+
+	for true {
+		if _data > currentNode.data {
+			if currentNode.right == nil {
+				currentNode.right = &newNode
+				return
+			}
+			currentNode = currentNode.right
+		} else {
+			if currentNode.left == nil {
+				currentNode = &newNode
+				return
+			}
+			currentNode = currentNode.left
+		}
 	}
 }
 
