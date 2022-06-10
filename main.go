@@ -7,5 +7,6 @@ import (
 func main() {
 	var BST BinarySearchTree.BinarySearchTree
 	BST.Insert(10)
-	BinarySearchTree.PrintBSTRoot(BST)
+	BST.Insert(5)
+	BST.PrintBSTRoot()
 }
