@@ -5,46 +5,56 @@ import (
 )
 
 type Node struct {
-	data  int
-	right *Node
-	left  *Node
+	Data  int
+	Right *Node
+	Left  *Node
 }
 
 type BinarySearchTree struct {
-	root *Node
+	Root *Node
 }
 
 func (BST *BinarySearchTree) Insert(_data int) {
 	newNode := &Node{
-		data:  _data,
-		right: nil,
-		left:  nil,
+		Data:  _data,
+		Right: nil,
+		Left:  nil,
 	}
 
-	if BST.root == nil {
-		BST.root = newNode
+	if BST.Root == nil {
+		BST.Root = newNode
 		return
 	}
 
-	currentNode := BST.root
+	currentNode := BST.Root
 
 	for true {
-		if _data > currentNode.data {
-			if currentNode.right == nil {
-				currentNode.right = newNode
+		if _data > currentNode.Data {
+			if currentNode.Right == nil {
+				currentNode.Right = newNode
 				return
 			}
-			currentNode = currentNode.right
+			currentNode = currentNode.Right
 		} else {
-			if currentNode.left == nil {
-				currentNode = newNode
+			if currentNode.Left == nil {
+				currentNode.Left = newNode
 				return
 			}
-			currentNode = currentNode.left
+			currentNode = currentNode.Left
 		}
 	}
 }
 
+func (BST *BinarySearchTree) InorderPrint(root *Node) {
+	if root == nil {
+		return
+	}
+
+	BST.InorderPrint(root.Left)
+	fmt.Print(root.Data, " ")
+	BST.InorderPrint(root.Right)
+}
+
 func (BST *BinarySearchTree) PrintBSTRoot() {
-	fmt.Println(BST.root.data)
+	fmt.Println(BST.Root.Data)
 }
