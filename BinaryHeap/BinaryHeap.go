@@ -47,7 +47,7 @@ func (bh *BinaryHeap) heapify(_i int) {
 func (bh *BinaryHeap) Insert(_elt int) {
 	var i int = len(bh.arr)
 	var p int = parent(i)
-	bh.arr[i] = _elt
+	bh.arr = append(bh.arr, _elt)
 
 	for i != 0 && _elt < bh.arr[p] {
 		bh.swap(i, p)
